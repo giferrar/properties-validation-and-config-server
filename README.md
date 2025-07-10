@@ -188,6 +188,8 @@ The Bean with the `@RefreshScope` annotation will be cleared and a new instance 
 - Create a new HTTP client that perform the POST call to the `/actuator/refresh` endpoint.
 - Call the actuator endpoint and verify that the values are updated.
 
+⚠️ The annotation `@RefreshScope` is not necessary if the class includes the annotations `@ConfigurationProperties`!
+
 ### 2.3. Logging properties at Refresh Scope Event
 During a refresh it is not displayed in log the which values the new properties possess. 
 To be able to log the value of the properties during a refresh, we will add the following listener:
