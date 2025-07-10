@@ -15,7 +15,7 @@ public class ClientController {
 
     @GetMapping("/info")
     public String info() {
-        return "name: %s, number: %s, enabled: %s, tags: %s".formatted(properties.getName(), properties.getNumber(), properties.isEnabled(), properties.getTags());
+        return "name: %s, number: %s, enabled: %s, tags: %s".formatted(properties.name(), properties.number(), properties.enabled(), properties.tags());
     }
 
 }

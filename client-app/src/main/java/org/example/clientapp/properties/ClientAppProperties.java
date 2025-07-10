@@ -1,49 +1,25 @@
 package org.example.clientapp.properties;
 
+import jakarta.validation.constraints.*;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.ArrayList;
 
+@Validated
 @ConfigurationProperties(prefix = "client-app")
-public class ClientAppProperties {
+public record ClientAppProperties (
+        @NotEmpty
+        String name,
 
-    private String name;
+        @Min(0)
+        @Max(100)
+        int number,
 
-    private int number;
+        @NotNull
+        boolean enabled,
 
-    private boolean enabled;
-
-    private ArrayList<String> tags;
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getNumber() {
-        return number;
-    }
-
-    public void setNumber(int number) {
-        this.number = number;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public ArrayList<String> getTags() {
-        return tags;
-    }
-
-    public void setTags(ArrayList<String> tags) {
-        this.tags = tags;
-    }
+        @Size(max = 5)
+        ArrayList<String> tags
+) {
 }
