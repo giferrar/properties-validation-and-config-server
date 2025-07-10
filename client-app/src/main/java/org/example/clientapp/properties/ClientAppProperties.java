@@ -1,25 +1,30 @@
 package org.example.clientapp.properties;
 
 import jakarta.validation.constraints.*;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.validation.annotation.Validated;
 
 import java.util.ArrayList;
 
+@Getter
+@Setter
+@ToString
 @Validated
 @ConfigurationProperties(prefix = "client-app")
-public record ClientAppProperties (
+public class ClientAppProperties {
         @NotEmpty
-        String name,
+        private String name;
 
         @Min(0)
         @Max(100)
-        int number,
+        private int number;
 
         @NotNull
-        boolean enabled,
+        private boolean enabled;
 
         @Size(max = 5)
-        ArrayList<String> tags
-) {
+        private ArrayList<String> tags;
 }
